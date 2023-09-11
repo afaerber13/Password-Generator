@@ -26,13 +26,13 @@ get.addEventListener("click", function () {
 
 
 function generatePassword() {
-  enter = Number(prompt("How many characters will your password be? Choose between 8 and 128."))
+  enter = parseInt(prompt("How many characters will your password be? Choose between 8 and 128."))
   if (!enter) {
     alert("Must have a value");
 } else if (enter < 8 || enter > 128) {
 
 
-    enter = Number(prompt("Value must be between 8 and 128"));
+    enter = parseInt(prompt("Value must be between 8 and 128"));
 
 
 }  else {
@@ -47,8 +47,43 @@ if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercas
 
 
 }
+else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
 
-
+  choices = character.concat(number, alpha, alpha2);
+}
+else if (confirmCharacter && confirmLowercase && confirmNumber) {
+  choices = character.concat (alpha, number);
+}
+else if (confirmCharacter && confirmUppercase && confirmNumber){
+  choices = character.concat (alpha2, number);
+}
+else if (confirmNumber && confirmLowercase && confirmUppercase){
+  choices = number.concat (alpha, alpha2);
+}
+else if (confirmNumber && confirmLowercase){
+  choices = number.concat (alpha);
+}
+else if (confirmNumber && confirmUppercase){
+  choices = number.concat (alpha2);
+}
+else if (confirmNumber && confirmCharacter){
+  choices = number.concat (character);
+}
+else if (confirmLowercase && confirmUppercase){
+  choices = alpha.concat (alpha2);
+}
+else if (confirmCharacter){
+  choices = character;
+}
+else if (confirmLowercase){
+  choices = alpha;
+}
+else if (confirmUppercase){
+  choices = alpha2;
+}
+else if (confirmNumber){
+  choices = number
+}
 // Write password to the #password input
 // function writePassword() {
 //   var password = generatePassword();
@@ -63,4 +98,3 @@ if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercas
 
 // // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
-

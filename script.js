@@ -4,7 +4,7 @@ var confirmCharacter;
 var confirmUppercase;
 var confirmLowercase;
 var generateBtn = document.querySelector("#generate");
-var length = Number(prompt("How many characters will your password be? Choose between 8 and 128."))
+
 
 
 character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
@@ -37,19 +37,19 @@ function generatePassword() {
 
 }  else {
  
-  confirmNumber = confirm("Will this contain numbers?");
-  confirmCharacter = confirm("Will this contain special characters?");
-  confirmUppercase = confirm("Will this contain Uppercase letters?");
-  confirmLowercase = confirm("Will this contain Lowercase letters?");
+  confirmNumber = confirm("Will your password contain numbers?");
+  confirmCharacter = confirm("Will your password contain special characters?");
+  confirmUppercase = confirm("Will your password contain Uppercase letters?");
+  confirmLowercase = confirm("Will your password contain Lowercase letters?");
 };
 
 if (!confirmCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
-  choices = alert("You must choose a criteria!");
+  choices = alert("You must choose at least one option");
 
 }
 else if (confirmCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
 
-  choices = character.concat(number, alpha, alphaUpper);
+  choices = character.concat (number, alpha, alphaUpper);
 }
 else if (confirmCharacter && confirmLowercase && confirmNumber) {
   choices = character.concat (alpha, number);
@@ -58,7 +58,7 @@ else if (confirmCharacter && confirmUppercase && confirmNumber){
   choices = character.concat (alphaUpper, number);
 }
 else if (confirmNumber && confirmLowercase && confirmUppercase){
-  choices = number.concat (alpha, alpha2);
+  choices = number.concat (alpha, alphaUpper);
 }
 else if (confirmNumber && confirmLowercase){
   choices = number.concat (alpha);
@@ -82,8 +82,8 @@ else if (confirmUppercase){
   choices = space.concat (alphaUpper);
 }
 else if (confirmNumber){
-  choices = number
-};
+  choices = number;
+}
 
 var password = []
 
@@ -91,18 +91,10 @@ for (var i = 0; i < enter; i++){
   var randomChoices = choices[Math.floor(Math.random() * choices.length)];
   password.push(randomChoices);
 }
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-
-  passwordText.value = password;
-
-
+return password;
 }
 
 
-// // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-}
+
+
+
